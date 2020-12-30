@@ -8,5 +8,9 @@
 <div class="alert alert-primary" role="alert">
 	This is a bootstrap alert
 </div>
+
+<p>
+	An eCommerce clothing store.
+</p>
 @endsection
 

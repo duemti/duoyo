@@ -13,11 +13,12 @@
 
 		<header>
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center">
-				<a class="navbar-brand" href="/">{DUYO logo}</a>
+				<a class="navbar-brand" href="/"><img src="{{ asset('imgs/logo/duoyo.svg') }}" alt="DUYO logo" /></a>
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="#">Men</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Women</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Kids</a></li>
+					<li class="nav-item"><a class="nav-link" href="/s/men">Men</a></li>
+					<li class="nav-item"><a class="nav-link" href="/s/women">Women</a></li>
+					<li class="nav-item"><a class="nav-link" href="/s/kids">Kids</a></li>
+					<li class="nav-item"><a class="nav-link" href="{{ url('product/create') }}">Add new product</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -25,7 +26,7 @@
 		<div>@yield('content')</div>
 
 		<footer>
-			<p>Developed by <em>Duemti</em></p>
+			<p>Created by <strong><a href="https://github.com/duemti">Duemti</a></strong></p>
 		</footer>
 	</body>
 </html>
