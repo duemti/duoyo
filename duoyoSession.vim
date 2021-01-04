@@ -72,11 +72,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 9 - ((8 * winheight(0) + 11) / 22)
+let s:l = 11 - ((10 * winheight(0) + 11) / 22)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-9
+11
 normal! 0
 wincmd w
 argglobal
@@ -90,13 +90,14 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 25 - ((24 * winheight(0) + 23) / 46)
+let s:l = 63 - ((32 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-25
-normal! 022|
+63
+normal! 0
 wincmd w
+3wincmd w
 exe '1resize ' . ((&lines * 23 + 24) / 49)
 exe 'vert 1resize ' . ((&columns * 95 + 95) / 191)
 exe '2resize ' . ((&lines * 22 + 24) / 49)
@@ -173,12 +174,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 108 - ((30 * winheight(0) + 23) / 46)
+let s:l = 92 - ((43 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-108
-normal! 030|
+92
+normal! 09|
 wincmd w
 argglobal
 if bufexists('routes/web.php') | buffer routes/web.php | else | edit routes/web.php | endif
@@ -216,12 +217,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 24 - ((23 * winheight(0) + 23) / 47)
+let s:l = 31 - ((30 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-24
-normal! 019|
+31
+normal! 020|
 tabedit database/migrations/2020_12_24_152024_create_products_table.php
 set splitbelow splitright
 set nosplitbelow
@@ -238,13 +239,13 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 19 - ((18 * winheight(0) + 23) / 47)
+let s:l = 34 - ((33 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-19
-normal! 034|
-tabnext 3
+34
+normal! 0
+tabnext 1
 set stal=1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

@@ -33,7 +33,9 @@
 
 		<label for="category">Category:</label>
 		<select id="category" name="category" required>
-			<option value="jackets&coats">Jackets & Coats</option>
+			@foreach ($categories as $cat)
+				<option value="{{ $cat->slug }}">{{ $cat->name }}</option>
+			@endforeach
 		</select>
 		</br>
 

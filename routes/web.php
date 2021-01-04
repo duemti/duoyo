@@ -25,3 +25,4 @@ Route::post('/product/store', [ProductController::class, 'store']);
 Route::match(['put', 'patch'], '/product/{id}', [ProductController::class, 'update']);
 Route::get('/product/edit/{id}', [ProductController::class, 'edit']);
 Route::get('/product/{slug}', [ProductController::class, 'show']);
+Route::delete('/product/{id}', [ProductController::class, 'destroy']);

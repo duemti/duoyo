@@ -40,31 +40,38 @@
 
 		<!-- Sizes field -->
 		<label for="size1">XS</label>
-		<input type="checkbox" id="size1" name="sizes[]" value="XS" {{ $product->sizes }}>
+		<input type="checkbox" id="size1" name="sizes[]" value="XS" {{ in_array('XS', $product->sizes) ? 'checked' : '' }}>
 		</br>
 		<label for="size2">S</label>
-		<input type="checkbox" id="size2" name="sizes[]" value="S">
+		<input type="checkbox" id="size2" name="sizes[]" value="S" {{ in_array('S', $product->sizes) ? 'checked' : '' }}>
 		</br>
 		<label for="size3">M</label>
-		<input type="checkbox" id="size3" name="sizes[]" value="M">
+		<input type="checkbox" id="size3" name="sizes[]" value="M" {{ in_array('M', $product->sizes) ? 'checked' : ''}}>
 		</br>
 		<label for="size4">L</label>
-		<input type="checkbox" id="size4" name="sizes[]" value="L">
+		<input type="checkbox" id="size4" name="sizes[]" value="L" {{ in_array('L', $product->sizes) ? 'checked' : '' }}>
 		</br>
 		<label for="size5">XL</label>
-		<input type="checkbox" id="size5" name="sizes[]" value="XL">
+		<input type="checkbox" id="size5" name="sizes[]" value="XL" {{ in_array('XL', $product->sizes) ? 'checked' : '' }}>
 		</br>
 		<label for="size6">XXL</label>
-		<input type="checkbox" id="size6" name="sizes[]" value="XXL">
+		<input type="checkbox" id="size6" name="sizes[]" value="XXL" {{ in_array('XXL', $product->sizes) ? 'checked' : '' }}>
 		</br>
 
 		<label for="price">Price:</label>
-		<input type="text" id="price" name="price" value="{{ old('price') }}"></br>
+		<input type="text" id="price" name="price" value="{{ $product->price }}"></br>
 
 		<label for="images">Upload Images:</label>
 		<input type="file" id="images" name="images"><br>
 
 		</br></br>
-		<input type="submit" value="add">
+		<input class="btn btn-primary" type="submit" value="add">
+	</form>
+
+
+	<form action="{{ url('product', $product->id) }}" method="POST">
+		@csrf
+		@method('DELETE')
+		<input class="btn btn-danger" type="submit" value="Delete"/>
 	</form>
 @endsection

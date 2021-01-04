@@ -1,9 +1,16 @@
 @extends('master')
 
-@section('title', 'Men Clothes')
+@section('title', "{{ $section }}'s section")
 
 @section('content')
 	<h1>Shop {{ $section }}'s section.</h1>
+	<ul class="nav flex-column">
+		@foreach ($categories as $category)
+			<li class="nav-item">
+				<a class="nav-link active" href="{{ url('s/'.strtolower($section).'?category='.urlencode($category->slug)) }}">{{ $category->name }}</a>
+			</li>
+		@endforeach
+	</ul>
 
 	@foreach ($products as $product)
 		<a href="{{ url('product', [$product->slug]) }}">

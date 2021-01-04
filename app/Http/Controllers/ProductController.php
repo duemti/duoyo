@@ -17,13 +17,21 @@ class ProductController extends Controller
      */
     public function index(Request $request, $section)
     {
-		if (in_array($section, ['men', 'women', 'kids']))
-			return view('product.index', [
-				'section' => strtoupper($section),
-				'products' => DB::table('products')->where('type', $section)->get()
-			]);
+		if (!in_array($section, ['men', 'women', 'kids']))
+			abort(404);
 
-		abort(404);
+		$categories = DB::table('categories')->get();
+		$products = DB::table('products')->where('type', $section)->get();
+		if ($request->has('category'))
+			$products = $products->where('category', $request->query('category'));
+echo $request->query('category');
+
+		return view('product.index', [
+			'section' => strtoupper($section),
+			'products' => $products,
+			'categories' => $categories
+		]);
+
     }
 
     /**
@@ -33,7 +41,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-		return view('product.create');
+		return view('product.create', [
+			'categories' => DB::table('categories')->get()
+		]);
     }
 
     /**
@@ -52,7 +62,7 @@ class ProductController extends Controller
 			'description' => $validated['description'],
 			'type' => $validated['type'],
 			'category' => $validated['category'],
-			'sizes' => $validated['sizes'][0],
+			'sizes' => implode(',', $validated['sizes']),
 			'img_path' => $validated['images']->store('images', 'public'),
 			'price' => $validated['price']
 		]);
@@ -71,6 +81,7 @@ class ProductController extends Controller
 		if (empty($product))
 			abort(404);
 
+		$product->sizes = explode(",", $product->sizes);
 		return view('product.show', [
 			'product' => $product
 		]);
@@ -88,6 +99,7 @@ class ProductController extends Controller
 		if (empty($product))
 			abort(404);
 
+		$product->sizes = explode(",", $product->sizes);
 		return view('product.edit', [
 			'product' => $product
 		]);
@@ -117,7 +129,9 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+	{
+		// Return number of deleted rows.
+		$count = DB::table('products')->where('id', $id)->delete();
+		return view('product.destroy');
     }
 }

@@ -13,7 +13,7 @@
 
 		<header>
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center">
-				<a class="navbar-brand" href="/"><img src="{{ asset('imgs/logo/duoyo.svg') }}" alt="DUYO logo" /></a>
+				<a class="navbar-brand" href="/"><img src="{{ asset('imgs/logo/duoyo.svg') }}" height="45" alt="DUYO logo" /></a>
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="nav-link" href="/s/men">Men</a></li>
 					<li class="nav-item"><a class="nav-link" href="/s/women">Women</a></li>
